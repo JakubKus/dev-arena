@@ -13,4 +13,6 @@ yarn-error.log*
 
 .idea
 
-appSettings.json
+api/bin
+api/obj
+api/appSettings.json

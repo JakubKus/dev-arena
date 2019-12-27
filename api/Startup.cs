@@ -31,6 +31,7 @@ namespace api
             services.AddSingleton<IDbSettings>(s => s.GetRequiredService<IOptions<DbSettings>>().Value);
             services.AddSingleton<DevArenaRepository>();
             services.AddSingleton<ShopItemsRepository>();
+            services.AddSingleton<DevelopersRepository>();
 
             // enable InMemory messaging services for subscription support.
             // services.AddInMemorySubscriptionProvider();
@@ -44,6 +45,8 @@ namespace api
                 // .AddDirectiveType<AuthorizeDirectiveType>()
                 .AddServices(sp)
                 .AddType<ShopItemType>()
+                .AddType<DeveloperType>()
+                .AddType<DamageType>()
                 .AddQueryType<QueryType>()
                 .AddMutationType<MutationType>()
                 .Create());

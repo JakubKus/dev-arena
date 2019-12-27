@@ -15,6 +15,11 @@ namespace api.repositories
             ShopItemsCollection = devArenaRepository.DevArenaDatabase.GetCollection<ShopItem>("shop_items");
         }
         
+        public List<ShopItem> GetAllShopItems()
+        {
+            return ShopItemsCollection.Find(x => true).ToList();
+        }
+        
         public List<ShopItem> GetShopItems(List<Guid> ids)
         {
             return ShopItemsCollection.Find(x => ids.Contains(x.Id)).ToList();

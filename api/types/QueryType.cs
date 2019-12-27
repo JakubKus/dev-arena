@@ -7,10 +7,16 @@ namespace api.types
         protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
         {
             descriptor
+                .Field(x => x.GetAllShopItems(default));
+            
+            descriptor
                 .Field(x => x.GetShopItems(default, default))
                 .Argument(
                     "ids",
-                    argumentDescriptor => argumentDescriptor.Type<NonNullType<ListType<NonNullType<IdType>>>>());
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<ListType<IdType>>>());
+
+            descriptor
+                .Field(x => x.GetAllDevelopers(default));
         }
     }
 }

@@ -8,13 +8,13 @@ namespace api
 {
     public class Query
     {
-        public List<ShopItem> GetAllShopItems([Service] ShopItemsRepository shopItemsRepository)
+        public List<Clothing> GetAllClothing([Service] ClothingRepository clothingRepository)
         {
-            return shopItemsRepository.GetAllShopItems();
+            return clothingRepository.GetAllClothing();
         }
-        public List<ShopItem> GetShopItems(List<Guid> ids, [Service] ShopItemsRepository shopItemsRepository)
+        public List<Clothing> GetClothing(List<Guid> ids, [Service] ClothingRepository clothingRepository)
         {
-            return shopItemsRepository.GetShopItems(ids);
+            return clothingRepository.GetClothing(ids);
         }
 
         public List<Developer> GetAllDevelopers([Service] DevelopersRepository developersRepository)

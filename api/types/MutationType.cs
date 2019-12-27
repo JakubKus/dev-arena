@@ -7,16 +7,16 @@ namespace api.types
         protected override void Configure(IObjectTypeDescriptor<Mutation> descriptor)
         {
             descriptor
-                .Field(x => x.AddShopItem(default, default, default, default))
-                .Argument(
-                    "name",
-                    argumentDescriptor => argumentDescriptor.Type<NonNullType<StringType>>())
+                .Field(x => x.AddClothing(default, default, default, default))
                 .Argument(
                     "price",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<FloatType>>())
                 .Argument(
                     "imageUrl",
-                    argumentDescriptor => argumentDescriptor.Type<NonNullType<UrlType>>());
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<UrlType>>())
+                .Argument(
+                    "bodyPart",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<BodyPartType>>());
             
             descriptor
                 .Field(x => x.AddDeveloper(default, default, default, default, default, default, default, default))

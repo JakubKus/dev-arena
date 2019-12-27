@@ -6,9 +6,9 @@ namespace api
 {
     public class Mutation
     {
-        public ShopItem AddShopItem(string name, double price, string imageUrl, [Service] ShopItemsRepository shopItemsRepository)
+        public Clothing AddClothing(double price, string imageUrl, BodyPart bodyPart, [Service] ClothingRepository clothingRepository)
         {
-            return shopItemsRepository.AddShopItem(name, price, imageUrl);
+            return clothingRepository.AddClothing(price, imageUrl, bodyPart);
         }
 
         public Developer AddDeveloper(string fullname, double price, int hp, int minDmg, int maxDmg, string avatarUrl,

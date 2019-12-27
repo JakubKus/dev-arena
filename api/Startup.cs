@@ -30,7 +30,7 @@ namespace api
             // If you need dependency injection with your query object add your query type as a services.
             services.AddSingleton<IDbSettings>(s => s.GetRequiredService<IOptions<DbSettings>>().Value);
             services.AddSingleton<DevArenaRepository>();
-            services.AddSingleton<ShopItemsRepository>();
+            services.AddSingleton<ClothingRepository>();
             services.AddSingleton<DevelopersRepository>();
 
             // enable InMemory messaging services for subscription support.
@@ -44,7 +44,8 @@ namespace api
                 // enable for authorization support
                 // .AddDirectiveType<AuthorizeDirectiveType>()
                 .AddServices(sp)
-                .AddType<ShopItemType>()
+                .AddType<ClothingType>()
+                .AddType<BodyPartType>()
                 .AddType<DeveloperType>()
                 .AddType<DamageType>()
                 .AddQueryType<QueryType>()

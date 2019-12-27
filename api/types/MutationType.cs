@@ -41,6 +41,30 @@ namespace api.types
                 .Argument(
                     "weaponUrl",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<UrlType>>());
+
+            descriptor
+                .Field(x => x.AddEnemy(default, default, default, default, default, default, default, default))
+                .Argument(
+                    "name",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<StringType>>())
+                .Argument(
+                    "hp",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<IntType>>())
+                .Argument(
+                    "minDmg",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<IntType>>())
+                .Argument(
+                    "maxDmg",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<IntType>>())
+                .Argument(
+                    "attackSpeed",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<FloatType>>())
+                .Argument(
+                    "quotes",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<ListType<NonNullType<StringType>>>>())
+                .Argument(
+                    "avatarUrl",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<UrlType>>());
         }
     }
 }

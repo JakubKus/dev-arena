@@ -21,5 +21,15 @@ namespace api
         {
             return developersRepository.GetAllDevelopers();
         }
+
+        public Developer GetDeveloper(Guid id, [Service] DevelopersRepository developersRepository)
+        {
+            return developersRepository.GetDeveloper(id);
+        }
+
+        public Enemy GetEnemy(Guid id, [Service] EnemiesRepository enemiesRepository)
+        {
+            return enemiesRepository.GetEnemy(id);
+        }
     }
 }

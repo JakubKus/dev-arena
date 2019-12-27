@@ -17,6 +17,18 @@ namespace api.types
 
             descriptor
                 .Field(x => x.GetAllDevelopers(default));
+
+            descriptor
+                .Field(x => x.GetDeveloper(default, default))
+                .Argument(
+                    "id",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<IdType>>());
+
+            descriptor
+                .Field(x => x.GetEnemy(default, default))
+                .Argument(
+                    "id",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<IdType>>());
         }
     }
 }

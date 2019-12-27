@@ -43,20 +43,4 @@ namespace api.types
                 .Type<NonNullType<UrlType>>();
         }
     }
-
-    public class DamageType : ObjectType<Damage>
-    {
-        protected override void Configure(IObjectTypeDescriptor<Damage> descriptor)
-        {
-            descriptor
-                .Field(x => x.Min)
-                .Description("Minimum amount of damage dealt by the developer")
-                .Type<NonNullType<IntType>>();
-            
-            descriptor
-                .Field(x => x.Max)
-                .Description("Maximum amount of damage dealt by the developer")
-                .Type<NonNullType<IntType>>();
-        }
-    }
 }

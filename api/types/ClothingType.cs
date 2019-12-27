@@ -1,6 +1,5 @@
 ﻿using api.models;
 using HotChocolate.Types;
-using HotChocolate.Types.Descriptors.Definitions;
 
 namespace api.types
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using api.models;
 using HotChocolate;
 using MongoDB.Driver;
@@ -18,6 +19,11 @@ namespace api.repositories
         public List<Developer> GetAllDevelopers()
         {
             return DevelopersCollection.Find(x => true).ToList();
+        }
+
+        public Developer GetDeveloper(Guid id)
+        {
+            return DevelopersCollection.AsQueryable().FirstOrDefault(x => x.Id == id);
         }
 
         public Developer AddDeveloper(string fullname, double price, int hp, int minDmg, int maxDmg, string avatarUrl, string weaponUrl)

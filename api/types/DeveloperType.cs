@@ -13,7 +13,7 @@ namespace api.types
                 .Type<NonNullType<IdType>>();
         
             descriptor
-                .Field(x => x.Fullname)
+                .Field(x => x.FullName)
                 .Description("Developer fullname")
                 .Type<NonNullType<StringType>>();
         

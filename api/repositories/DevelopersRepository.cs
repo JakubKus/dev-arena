@@ -26,12 +26,12 @@ namespace api.repositories
             return DevelopersCollection.AsQueryable().FirstOrDefault(x => x.Id == id);
         }
 
-        public Developer AddDeveloper(string fullname, double price, int hp, int minDmg, int maxDmg, string avatarUrl, string weaponUrl)
+        public Developer AddDeveloper(string fullName, double price, int hp, int minDmg, int maxDmg, string avatarUrl, string weaponUrl)
         {
             var newDeveloper = new Developer
             {
                 Id = Guid.NewGuid(),
-                Fullname = fullname,
+                FullName = fullName,
                 Price = price,
                 Hp = hp,
                 Damage = new Damage

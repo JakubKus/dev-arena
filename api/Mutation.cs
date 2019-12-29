@@ -12,10 +12,10 @@ namespace api
             return clothingRepository.AddClothing(price, imageUrl, bodyPart);
         }
 
-        public Developer AddDeveloper(string fullname, double price, int hp, int minDmg, int maxDmg, string avatarUrl,
+        public Developer AddDeveloper(string fullName, double price, int hp, int minDmg, int maxDmg, string avatarUrl,
             string weaponUrl, [Service] DevelopersRepository developersRepository)
         {
-            return developersRepository.AddDeveloper(fullname, price, hp, minDmg, maxDmg, avatarUrl, weaponUrl);
+            return developersRepository.AddDeveloper(fullName, price, hp, minDmg, maxDmg, avatarUrl, weaponUrl);
         }
 
         public Enemy AddEnemy(string name, int hp, int minDmg, int maxDmg, double attackSpeed, List<string> quotes, string avatarUrl,

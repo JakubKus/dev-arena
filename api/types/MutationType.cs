@@ -21,7 +21,7 @@ namespace api.types
             descriptor
                 .Field(x => x.AddDeveloper(default, default, default, default, default, default, default, default))
                 .Argument(
-                    "fullname",
+                    "fullName",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<StringType>>())
                 .Argument(
                     "price",

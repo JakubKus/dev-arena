@@ -33,9 +33,14 @@ namespace api
             services.AddSingleton<ClothingRepository>();
             services.AddSingleton<DevelopersRepository>();
             services.AddSingleton<EnemiesRepository>();
-
             // enable InMemory messaging services for subscription support.
             // services.AddInMemorySubscriptionProvider();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
 
             // this enables you to use DataLoader in your resolvers.
             services.AddDataLoaderRegistry();
@@ -58,6 +63,8 @@ namespace api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("AllowAnyOrigin");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

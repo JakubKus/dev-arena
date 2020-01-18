@@ -29,6 +29,12 @@ namespace api.types
                 .Argument(
                     "id",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<IdType>>());
+
+            descriptor
+                .Field(x => x.GetHighScoresOfCategory(default, default))
+                .Argument(
+                    "scoreCategory",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<ScoreCategoryType>>());
         }
     }
 }

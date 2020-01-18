@@ -31,5 +31,10 @@ namespace api
         {
             return enemiesRepository.GetEnemy(id);
         }
+
+        public List<HighScore> GetHighScoresOfCategory(ScoreCategory scoreCategory, [Service] HighScoresRepository highScoresRepository)
+        {
+            return highScoresRepository.GetHighScoresOfCategory(scoreCategory);
+        }
     }
 }

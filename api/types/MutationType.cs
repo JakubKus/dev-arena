@@ -7,7 +7,10 @@ namespace api.types
         protected override void Configure(IObjectTypeDescriptor<Mutation> descriptor)
         {
             descriptor
-                .Field(x => x.AddClothing(default, default, default, default))
+                .Field(x => x.AddClothing(default, default, default, default, default))
+                .Argument(
+                    "name",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<StringType>>())
                 .Argument(
                     "price",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<FloatType>>())
@@ -65,6 +68,18 @@ namespace api.types
                 .Argument(
                     "avatarUrl",
                     argumentDescriptor => argumentDescriptor.Type<NonNullType<UrlType>>());
+
+            descriptor
+                .Field(x => x.AddHighScore(default, default, default, default))
+                .Argument(
+                    "nickname",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<StringType>>())
+                .Argument(
+                    "value",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<FloatType>>())
+                .Argument(
+                    "scoreCategory",
+                    argumentDescriptor => argumentDescriptor.Type<NonNullType<ScoreCategoryType>>());
         }
     }
 }

@@ -33,6 +33,7 @@ namespace api
             services.AddSingleton<ClothingRepository>();
             services.AddSingleton<DevelopersRepository>();
             services.AddSingleton<EnemiesRepository>();
+            services.AddSingleton<HighScoresRepository>();
             // enable InMemory messaging services for subscription support.
             // services.AddInMemorySubscriptionProvider();
             
@@ -51,10 +52,9 @@ namespace api
                 // .AddDirectiveType<AuthorizeDirectiveType>()
                 .AddServices(sp)
                 .AddType<ClothingType>()
-                .AddType<BodyPartType>()
                 .AddType<DeveloperType>()
-                .AddType<DamageType>()
                 .AddType<EnemyType>()
+                .AddType<HighScoreType>()
                 .AddQueryType<QueryType>()
                 .AddMutationType<MutationType>()
                 .Create());

@@ -7,9 +7,9 @@ namespace api
 {
     public class Mutation
     {
-        public Clothing AddClothing(double price, string imageUrl, BodyPart bodyPart, [Service] ClothingRepository clothingRepository)
+        public Clothing AddClothing(string name, double price, string imageUrl, BodyPart bodyPart, [Service] ClothingRepository clothingRepository)
         {
-            return clothingRepository.AddClothing(price, imageUrl, bodyPart);
+            return clothingRepository.AddClothing(name, price, imageUrl, bodyPart);
         }
 
         public Developer AddDeveloper(string fullName, double price, int hp, int minDmg, int maxDmg, string avatarUrl,
@@ -22,6 +22,11 @@ namespace api
             [Service] EnemiesRepository enemiesRepository)
         {
             return enemiesRepository.AddEnemy(name, hp, minDmg, maxDmg, attackSpeed, quotes, avatarUrl);
+        }
+
+        public HighScore AddHighScore(string nickname, double value, ScoreCategory scoreCategory, [Service] HighScoresRepository highScoresRepository)
+        {
+            return highScoresRepository.AddHighScore(nickname, value, scoreCategory);
         }
     }
 }

@@ -25,11 +25,12 @@ namespace api.repositories
             return ClothingCollection.Find(x => ids.Contains(x.Id)).ToList();
         }
         
-        public Clothing AddClothing(double price, string imageUrl, BodyPart bodyPart)
+        public Clothing AddClothing(string name, double price, string imageUrl, BodyPart bodyPart)
         {
             var newClothing = new Clothing
             {
                 Id = Guid.NewGuid(),
+                Name = name,
                 Price = price,
                 ImageUrl = imageUrl,
                 BodyPart = bodyPart

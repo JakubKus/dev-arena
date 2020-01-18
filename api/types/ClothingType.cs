@@ -13,6 +13,11 @@ namespace api.types
                 .Type<NonNullType<IdType>>();
         
             descriptor
+                .Field(x => x.Name)
+                .Description("Name of the clothing")
+                .Type<NonNullType<StringType>>();
+        
+            descriptor
                 .Field(x => x.Price)
                 .Description("The price of the clothing")
                 .Type<NonNullType<FloatType>>();
@@ -21,6 +26,10 @@ namespace api.types
                 .Field(x => x.ImageUrl)
                 .Description("Link to the clothing image")
                 .Type<NonNullType<UrlType>>();
+
+            descriptor
+                .Field(x => x.BodyPart)
+                .Description("Clothing part of the body");
         }
     }
     public class BodyPartType : EnumType<BodyPart>

@@ -14,7 +14,7 @@ namespace api.types
         
             descriptor
                 .Field(x => x.FullName)
-                .Description("Developer fullname")
+                .Description("Developer fullName")
                 .Type<NonNullType<StringType>>();
         
             descriptor

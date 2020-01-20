@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import './shop.scss';
+import './credits.scss';
 
-export const Shop: FC = () => {
+export const Credits: FC = () => {
   return (
     <></>
   );

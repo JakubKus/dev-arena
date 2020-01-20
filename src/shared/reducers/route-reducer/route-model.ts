@@ -1,9 +1,9 @@
-import route from '../../models/routes';
+import ROUTE from '../../models/routes';
 
 export type State = {
-  activeRoute: route,
+  activeRoute: ROUTE,
 };
 
 export type RouteAction = {
-  type: route,
+  type: ROUTE,
 };

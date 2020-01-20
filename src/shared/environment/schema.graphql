@@ -1,0 +1,139 @@
+# The cost directives is used to express the complexity of a field.
+directive @cost(
+  # Defines the complexity of the field.
+  complexity: Int! = 1
+  # Defines field arguments that act as complexity multipliers.
+  multipliers: [MultiplierPath!]
+) on FIELD_DEFINITION
+enum BodyPart {
+  # Top clothing body part
+  TOP
+  # Middle clothing body part
+  MIDDLE
+  # Bottom clothing body part
+  BOTTOM
+}
+
+type Clothing {
+  # Clothing part of the body
+  bodyPart: BodyPart!
+  # Unique id of the clothing
+  id: ID!
+  # Link to the clothing image
+  imageUrl: Url!
+  # Name of the clothing
+  name: String!
+  # The price of the clothing
+  price: Float!
+}
+
+type Damage {
+  # Maximum amount of damage dealt
+  max: Int!
+  # Minimum amount of damage dealt
+  min: Int!
+}
+
+# The `DateTime` scalar represents an ISO-8601 compliant date time type.
+scalar DateTime
+
+type Developer {
+  # Developer avatar url
+  avatarUrl: Url!
+  # Amount of damage dealt by the developer
+  damage: Damage!
+  # Developer fullName
+  fullName: String!
+  # Developer hit points
+  hp: Int!
+  # Unique developer id
+  id: ID!
+  # Developer price
+  price: Float!
+  # Developer weapon url
+  weaponUrl: Url!
+}
+
+type Enemy {
+  # Number of attacks per second
+  attackSpeed: Float!
+  # Enemy avatar url
+  avatarUrl: Url!
+  # Amount of damage dealt by the enemy
+  damage: Damage!
+  # Enemy hit points
+  hp: Int!
+  # Unique enemy id
+  id: ID!
+  # Enemy name
+  name: String!
+  # Enemy attack quotes
+  quotes: [String!]!
+}
+
+type HighScore {
+  # High score category
+  category: ScoreCategory!
+  # High score establish date
+  establishedOn: DateTime!
+  # Unique high score id
+  id: ID!
+  # Player nickname
+  nickname: String!
+  # High score value
+  value: Float!
+}
+
+# The multiplier path scalar represents a valid GraphQL multiplier path string.
+scalar MultiplierPath
+
+type Mutation {
+  addClothing(
+    bodyPart: BodyPart!
+    imageUrl: Url!
+    name: String!
+    price: Float!
+  ): Clothing
+  addDeveloper(
+    avatarUrl: Url!
+    fullName: String!
+    hp: Int!
+    maxDmg: Int!
+    minDmg: Int!
+    price: Float!
+    weaponUrl: Url!
+  ): Developer
+  addEnemy(
+    attackSpeed: Float!
+    avatarUrl: Url!
+    hp: Int!
+    maxDmg: Int!
+    minDmg: Int!
+    name: String!
+    quotes: [String!]!
+  ): Enemy
+  addHighScore(
+    nickname: String!
+    scoreCategory: ScoreCategory!
+    value: Float!
+  ): HighScore
+}
+
+type Query {
+  allClothing: [Clothing]
+  allDevelopers: [Developer]
+  clothing(ids: [ID]!): [Clothing]
+  developer(id: ID!): Developer
+  enemy(id: ID!): Enemy
+  highScoresOfCategory(scoreCategory: ScoreCategory!): [HighScore]
+}
+
+enum ScoreCategory {
+  # Fastest combo category
+  COMBO
+  # Most won fights category
+  WONFIGHTS
+}
+
+scalar Url
+

@@ -1,18 +1,23 @@
 import React from 'react';
-import route from '../../models/routes';
+import ROUTE from '../../models/routes';
 import { State, RouteAction } from './route-model'
 
-export const routeReducer = (state: State, action: RouteAction) => {
+export const routeReducer = (state: State, action: RouteAction): State => {
   switch (action.type) {
-    case route.ChooseDeveloper: return { activeRoute: route.ChooseDeveloper };
-    case route.Battleground: return { activeRoute: route.Battleground};
-    case route.Shop: return { activeRoute: route.Shop };
+    case ROUTE.Arena: return { activeRoute: ROUTE.Arena};
+    case ROUTE.ChangeNickname: return { activeRoute: ROUTE.ChangeNickname};
+    case ROUTE.ChooseDeveloper: return { activeRoute: ROUTE.ChooseDeveloper };
+    case ROUTE.Credits: return { activeRoute: ROUTE.Credits };
+    case ROUTE.EnterNickname: return { activeRoute: ROUTE.EnterNickname };
+    case ROUTE.HighScores: return { activeRoute: ROUTE.HighScores };
+    case ROUTE.Home: return { activeRoute: ROUTE.Home };
+    case ROUTE.Shop: return { activeRoute: ROUTE.Shop };
     default: return state;
   }
 };
 
 export const routeReducerInit: State = {
-  activeRoute: route.Battleground
+  activeRoute: ROUTE.EnterNickname
 };
 
 interface RouteContextModel {
@@ -21,5 +26,5 @@ interface RouteContextModel {
 }
 
 export const RouteContext = React.createContext<RouteContextModel>({
-  state: routeReducerInit, dispatch: () => {}
+  state: routeReducerInit, dispatch: () => null
 });

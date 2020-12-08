@@ -1,0 +1,28 @@
+@import 'src/shared';
+
+.shop {
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 25px;
+
+    &-title {
+      @include title-font;
+      margin: 35px 0 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 234px;
+    padding: 0 40px 100px;
+  }
+
+  &__balance {
+    @include white-rounded-border;
+    bottom: 40px;
+    position: fixed;
+    right: 40px;
+  }
+}

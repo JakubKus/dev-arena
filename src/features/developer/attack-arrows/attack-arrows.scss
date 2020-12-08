@@ -1,0 +1,27 @@
+.combo {
+  background: white;
+  border: 2px solid;
+  border-radius: 50px;
+  bottom: 100%;
+  left: 0;
+  margin: auto;
+  opacity: 0;
+  padding: 3px 8px;
+  position: absolute;
+  right: 0;
+  width: fit-content;
+}
+
+.arrows {
+  bottom: 0;
+  display: flex;
+  position: absolute;
+
+  &__arrow {
+    background-color: black;
+    border-radius: 4px;
+    color: white;
+    margin: 3px;
+    padding: 4px 9px;
+  }
+}

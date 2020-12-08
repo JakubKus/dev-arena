@@ -1,0 +1,29 @@
+@import 'src/shared';
+
+.home {
+  @include container-center;
+  background: url('~assets/mouse.png') no-repeat center top;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+  height: 600px;
+
+  &__link {
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    color: black;
+    border-bottom: 2px solid;
+    transition: color 0.2s;
+
+    &:first-child {
+      margin-top: 65px;
+    }
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}

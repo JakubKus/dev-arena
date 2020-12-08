@@ -1,0 +1,28 @@
+@import 'src/shared';
+
+.highscores {
+  @include container-center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 30px 90px 50px;
+
+  &__section {
+    display: flex;
+
+    &-title {
+      @include title-font;
+      margin: 20px 0 8px;
+    }
+  }
+}
+
+.highscore {
+  color: white;
+  overflow: hidden;
+  padding: 2px 8px;
+
+  &--nick {
+    text-overflow: ellipsis;
+    width: 80px;
+  }
+}

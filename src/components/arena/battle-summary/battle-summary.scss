@@ -1,0 +1,34 @@
+@import 'src/shared';
+
+.battle-summary {
+  @include container-center;
+  background: white;
+  padding: 30px 40px;
+  width: 370px;
+  border-radius: 6px;
+  box-shadow: black 2px 2px 5px;
+
+  &__text {
+    text-shadow: $green 1px 1px;
+  }
+
+  &__links {
+    display: flex;
+    margin-top: 25px;
+  }
+
+  &__link {
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 3px 8px;
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

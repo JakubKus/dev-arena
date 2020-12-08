@@ -1,0 +1,106 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  addClothing(bodyPart: bodyPart!, imageUrl: String!, name: String!, price: Float!): clothing
+  addComboTime(nickname: String!, value: Int!): highscores
+  addDeveloper(avatarUrl: String!, damage: developerDamageInput!, hp: Int!, name: String!, price: Float!, weaponUrl: String!): developer
+  addEnemy(attackSpeed: Float!, avatarUrl: String!, damage: enemyDamageInput!, hp: Int!, name: String!, quotes: [String!]!): enemy
+  addPlayer(boughtIds: [ID!]!, cash: Float!, chosenDevName: String!, email: String!, equippedIds: [ID!]!, nickname: String!, wonFights: Int!): player
+  addWonFight(nickname: String!, value: Int!): highscores
+  equipItem(equippedIds: [ID!]!, nickname: String!, toEquipId: ID!): player
+  updatePlayer(boughtIds: [ID], cash: Float, chosenDevName: String, comboTime: Int, equippedIds: [ID], nickname: String!, wonFights: Int): player
+}
+
+type Query {
+  allClothing: [clothing]
+  allDevelopers: [developer]
+  clothing(ids: [ID!]!): [clothing]
+  comboTimes: [highscores]
+  defaultDeveloper: developer
+  developer(name: String): developer
+  player(email: String!): player
+  randomEnemy: enemy
+  wonFights: [highscores]
+}
+
+type clothing {
+  bodyPart: bodyPart!
+  id: ID!
+  imageUrl: String!
+  name: String!
+  price: Float!
+}
+
+type developer {
+  avatarUrl: String!
+  damage: developerDamage!
+  hp: Int!
+  id: ID!
+  name: String!
+  price: Float!
+  weaponUrl: String!
+}
+
+type developerDamage {
+  max: Int!
+  min: Int!
+}
+
+type enemy {
+  attackSpeed: Float!
+  avatarUrl: String!
+  damage: enemyDamage!
+  hp: Int!
+  id: ID!
+  name: String!
+  quotes: [String!]!
+}
+
+type enemyDamage {
+  max: Int!
+  min: Int!
+}
+
+type highscores {
+  establishedOn: DateTime!
+  id: ID!
+  nickname: String!
+  value: Int!
+}
+
+type player {
+  boughtIds: [ID!]!
+  cash: Float!
+  chosenDevName: String!
+  comboTime: Int
+  email: String!
+  equippedIds: [ID!]!
+  id: ID!
+  nickname: String!
+  wonFights: Int!
+}
+
+enum bodyPart {
+  bottom
+  middle
+  top
+}
+
+input developerDamageInput {
+  max: Int!
+  min: Int!
+}
+
+input enemyDamageInput {
+  max: Int!
+  min: Int!
+}
+
+
+"A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
+scalar DateTime

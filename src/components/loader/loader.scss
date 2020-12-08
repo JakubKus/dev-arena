@@ -1,0 +1,22 @@
+@import 'src/shared';
+
+.loader {
+  animation: spin 2s linear infinite;
+  border: 12px solid black;
+  border-radius: 50%;
+  border-top-color: $grey;
+  height: 70px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(1turn);
+  }
+}

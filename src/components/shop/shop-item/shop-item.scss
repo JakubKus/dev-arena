@@ -1,0 +1,72 @@
+@import 'src/shared';
+
+.shop-item {
+  align-items: center;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: 370px;
+  margin: 10px;
+  border: 2px solid;
+  width: 230px;
+  position: relative;
+
+  &__image {
+    height: 70%;
+    object-fit: contain;
+    width: 100%;
+    transition: filter 0.25s;
+    margin-top: 10%;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    height: 20%;
+    background: $grey;
+    font-size: 17px;
+    margin-top: 10%;
+    transition: filter 0.25s;
+    align-items: center;
+  }
+
+  &__name {
+    margin-right: 10px;
+    text-shadow: $green 1px 1px;
+  }
+
+  &__price {
+    text-shadow: $orange 1px 1px;
+  }
+
+  &__cta {
+    background: rgba(255, 255, 255, .5);
+    border: 2px solid;
+    margin: auto;
+    padding: 8px 30px;
+    opacity: 0;
+    font-size: 25px;
+    top: 50%;
+    text-shadow: $green 1px 1px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: $green 1px 1px;
+    transition: opacity 0.25s;
+  }
+
+  &:hover & {
+    &__cta {
+      opacity: 1;
+    }
+
+    &__image, &__details {
+      filter: blur(3px);
+    }
+  }
+}

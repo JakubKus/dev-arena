@@ -1,0 +1,32 @@
+@import 'src/shared.scss';
+
+.enemy {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__hp {
+    @include hp-bar;
+    margin-top: 20px;
+
+    &-loss {
+      @include hp-loss;
+    }
+  }
+}
+
+.quote {
+  background: white;
+  border: 2px solid;
+  border-radius: 6px;
+  font-weight: bold;
+  opacity: 0;
+  padding: 3px 8px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+}

@@ -1,0 +1,41 @@
+@import 'src/shared.scss';
+
+.developer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  position: relative;
+
+  &__clothing {
+    position: absolute;
+    left: 0;
+
+    &--top {
+      top: 0;
+    }
+
+    &--middle {
+      top: 72px;
+    }
+
+    &--bottom {
+      top: 174px;
+    }
+  }
+
+  &__weapon {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__hp {
+    @include hp-bar;
+
+    &-loss {
+      @include hp-loss;
+    }
+  }
+}

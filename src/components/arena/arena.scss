@@ -1,0 +1,12 @@
+@import 'src/shared';
+
+.arena {
+  @include flex-center;
+  position: relative;
+  width: 50%;
+
+  &__container {
+    @include flex-center;
+    height: 100%;
+  }
+}

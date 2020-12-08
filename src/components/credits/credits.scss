@@ -1,0 +1,14 @@
+@import 'src/shared';
+
+.credits {
+  @include container-center;
+  @include title-font;
+  padding: 20px 40px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  &__link {
+    text-decoration: underline;
+    text-shadow: $green 1px 1px 1px;
+  }
+}

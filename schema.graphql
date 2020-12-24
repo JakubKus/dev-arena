@@ -19,7 +19,7 @@ type Mutation {
 type Query {
   allClothing: [clothing]
   allDevelopers: [developer]
-  clothing(ids: [ID!]!): [clothing]
+  clothing(ids: [ID!]): [clothing]
   comboTimes: [highscores]
   defaultDeveloper: developer
   developer(name: String): developer

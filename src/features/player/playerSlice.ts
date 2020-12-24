@@ -39,12 +39,10 @@ export const playerSlice = createSlice({
       state.equippedIds = initialState.equippedIds;
       state.chosenDevName = initialState.chosenDevName;
       state.isInitialized = initialState.isInitialized;
-    }
+    },
   },
 });
 
 export const { updatePlayer, clearPlayer } = playerSlice.actions;
-
 export const selectPlayer = ({ player }: RootState) => player;
-
 export default playerSlice.reducer;

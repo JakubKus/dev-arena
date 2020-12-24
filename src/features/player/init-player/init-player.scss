@@ -1,14 +1,17 @@
 @import 'src/shared';
 
-.credits {
+.init-player {
   @include container-center;
   @include title-font;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 20px 40px;
 
-  &__link {
+  &__button {
+    display: block;
+    margin: auto;
     text-decoration: underline;
     text-shadow: $green 1px 1px 1px;
+    width: fit-content;
   }
 }

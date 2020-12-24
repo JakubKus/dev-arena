@@ -6,5 +6,6 @@ export const Credits: React.FC = () => <>
   <HomeButton />
   <p className="credits">
     {'Crafted with ❤ by Jakub Kuś: '}
-    <a className="credits__link" href="https://github.com/JakubKus">github</a></p>
+    <a className="credits__link" href="https://github.com/JakubKus">github</a>
+  </p>
 </>;

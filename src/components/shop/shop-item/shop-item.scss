@@ -2,37 +2,37 @@
 
 .shop-item {
   align-items: center;
-  background-color: white;
+  background-image: linear-gradient(to bottom, white 80%, $grey 20%);
+  border: 2px solid;
   border-radius: 6px;
   display: flex;
-  overflow: hidden;
   flex-direction: column;
-  height: 370px;
-  margin: 10px;
-  border: 2px solid;
-  width: 230px;
+  height: 300px;
+  margin: 6px;
+  overflow: hidden;
   position: relative;
+  width: 200px;
 
   &__image {
     height: 70%;
-    object-fit: contain;
-    width: 100%;
-    transition: filter 0.25s;
     margin-top: 10%;
+    object-fit: scale-down;
+    transition: filter 0.25s;
+    width: 100%;
   }
 
   &__details {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    height: 20%;
-    background: $grey;
-    font-size: 17px;
-    margin-top: 10%;
-    transition: filter 0.25s;
     align-items: center;
+    background: $grey;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 17px;
+    height: 20%;
+    justify-content: space-between;
+    margin-top: 10%;
+    padding: 0 20px;
+    transition: filter 0.25s;
+    width: 100%;
   }
 
   &__name {
@@ -47,16 +47,16 @@
   &__cta {
     background: rgba(255, 255, 255, .5);
     border: 2px solid;
-    margin: auto;
-    padding: 8px 30px;
-    opacity: 0;
-    font-size: 25px;
-    top: 50%;
-    text-shadow: $green 1px 1px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-shadow: $green 1px 1px;
+    font-size: 25px;
+    left: 50%;
+    margin: auto;
+    opacity: 0;
+    padding: 8px 30px;
+    position: absolute;
+    text-shadow: $green 1px 1px;
+    top: 50%;
+    transform: translate(-50%, -50%);
     transition: opacity 0.25s;
   }
 

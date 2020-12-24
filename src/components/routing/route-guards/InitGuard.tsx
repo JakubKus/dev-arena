@@ -10,14 +10,7 @@ export const InitGuard: React.FC = ({ children }) => {
   const player = useSelector(selectPlayer);
   const { isLoading } = useAuth0();
 
-  if (player.isInitialized) return <>{children}</>; // 2, 3, 5
+  if (player.isInitialized) return <>{children}</>;
   if (isLoading) return <Loader />;
-  return <Redirect to={ROUTE.auth} />; // 1, 4, 6
+  return <Redirect to={ROUTE.auth} />;
 };
-/* #1 not logged, 1st time           // welcome
- * #2 not logged, guest refresh      // pass
- * #3 not logged, guest              // pass
- * #4 logged, initialized refresh    // loading -> welcome -> pass
- * #5 logged, initialized            // pass
- * #6 logged not initialized refresh // loading welcome -> createAcc
- */

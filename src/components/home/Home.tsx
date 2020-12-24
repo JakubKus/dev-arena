@@ -1,24 +1,29 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { AvailableLink } from 'components/home/available-link/AvailableLink';
 import 'components/home/home.scss';
-import { IS_GUEST } from 'localstorage-keys';
+import { logOut, selectGuest } from 'features/auth/authSlice';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'routes';
 
 export const Home: React.FC = () => {
+  const dispatch = useDispatch();
   const { logout } = useAuth0();
+  const isGuest = useSelector(selectGuest);
+  const authButton = isGuest ? 'Create account' : 'Logout';
+
   const handleAuth = () => {
-    localStorage.removeItem(IS_GUEST);
+    dispatch(logOut());
     logout();
   };
-  const authButton = localStorage[IS_GUEST] ? 'Create account' : 'Logout';
 
   return (
     <nav className="home">
       <Link className="home__link" to={ROUTE.battle}>Go fight!</Link>
       <Link className="home__link" to={ROUTE.highscores}>Highscores</Link>
-      <Link className="home__link" to={ROUTE.profile}>Profile</Link>
-      <Link className="home__link" to={ROUTE.shop}>Shop</Link>
+      <AvailableLink text="Profile" path={ROUTE.profile} />
+      <AvailableLink text="Shop" path={ROUTE.shop} />
       <Link className="home__link" to={ROUTE.credits}>Credits</Link>
       <button className="home__link" onClick={handleAuth}>{authButton}</button>
     </nav>

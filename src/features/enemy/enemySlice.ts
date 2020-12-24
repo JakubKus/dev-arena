@@ -20,8 +20,7 @@ export const enemySlice = createSlice({
     },
     resetEnemy: state => {
       state.hp = state.hit = null;
-    }
-    // todo: hadnle 0 hp case
+    },
   },
 });
 

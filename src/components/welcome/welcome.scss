@@ -2,13 +2,13 @@
 
 .welcome {
   @include container-center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   height: 600px;
   justify-content: center;
-  width: 600px;
-  align-items: flex-start;
   padding-left: 7%;
+  width: 600px;
 
   &:before {
     background: url('~assets/mouse.png') no-repeat center top;
@@ -23,11 +23,11 @@
   }
 
   &__link {
-    position: relative;
-    font-size: 18px;
-    padding: 8px 10px;
-    color: black;
     border-bottom: 2px solid;
+    color: black;
+    font-size: 15px;
+    padding: 8px 10px;
+    position: relative;
     transition: color 0.2s;
 
     &:hover {

@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { selectLoginFailed, fulfillLogin, failLogin } from 'features/auth/authSlice';
+import { failLogin, fulfillLogin, selectGuest, selectLoginFailed } from 'features/auth/authSlice';
 import { selectPlayer, updatePlayer } from 'features/player/playerSlice';
-import { IS_GUEST, TOKEN } from 'localstorage-keys';
+import { TOKEN } from 'localstorage-keys';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -13,17 +13,19 @@ export const Authorizer: React.FC = () => {
   const history = useHistory();
   const isLoginFail = useSelector(selectLoginFailed);
   const player = useSelector(selectPlayer);
+  const isGuest = useSelector(selectGuest);
 
   useEffect(() => {
-    user && dispatch(updatePlayer({ email: user.email, nickname: user.nickname }));
-  }, [user, dispatch]);
+    if (user) {
+      const nickname = user[`${process.env.REACT_APP_AUTH0_NAMESPACE}/username`];
+      dispatch(updatePlayer({ email: user.email, nickname }));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     (async () => {
       try {
-        const token = await getAccessTokenSilently();
-        localStorage.setItem(TOKEN, token);
-        localStorage.removeItem(IS_GUEST);
+        localStorage[TOKEN] = await getAccessTokenSilently();
         dispatch(fulfillLogin());
       } catch (e) {
         dispatch(failLogin());
@@ -32,10 +34,10 @@ export const Authorizer: React.FC = () => {
   }, [dispatch, getAccessTokenSilently]);
 
   useEffect(() => {
-    if (localStorage[IS_GUEST]) history.push(ROUTE.initDeveloper);
+    if (isGuest) history.push(ROUTE.initDeveloper);
     if (player.email) history.push(ROUTE.initPlayer);
     if (isLoginFail) history.push(ROUTE.welcome);
-  }, [player.nickname, isLoginFail, history]);
+  }, [isGuest, history, player.email, isLoginFail]);
 
   return null;
 };

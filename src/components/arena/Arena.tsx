@@ -7,17 +7,19 @@ import { Enemy } from 'features/enemy/Enemy';
 import { selectEnemyHp } from 'features/enemy/enemySlice';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { DEV_ATTACK_DURATION, ENEMY_ATTACK_DURATION } from 'shared';
 
 export const Arena: React.FC = () => {
-  const [hasBattleEnded, setHasBattleEnded] = useState(false);
   const developerHp = useSelector(selectDeveloperHp);
   const enemyHp = useSelector(selectEnemyHp);
   const arenaRef = useRef<HTMLDivElement>(null);
-  const arenaWidth = arenaRef.current?.clientWidth ?? 300;
+  const arenaWidth = arenaRef.current?.clientWidth ?? 0;
+  const [hasBattleEnded, setHasBattleEnded] = useState(false);
 
   useEffect(() => {
     if (developerHp !== null && enemyHp !== null && (developerHp <= 0 || enemyHp <= 0)) {
-      const timeout = setTimeout(() => setHasBattleEnded(true), developerHp > enemyHp ? 700 : 1000);
+      const fightEndDelay = developerHp > enemyHp ? .85 * DEV_ATTACK_DURATION : .85 * ENEMY_ATTACK_DURATION;
+      const timeout = setTimeout(() => setHasBattleEnded(true), fightEndDelay);
       return () => clearTimeout(timeout);
     }
   }, [developerHp, enemyHp]);

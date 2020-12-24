@@ -22,7 +22,7 @@ export const developerSlice = createSlice({
     },
     resetDeveloper: state => {
       state.hp = state.hit = null;
-    }
+    },
   },
 });
 

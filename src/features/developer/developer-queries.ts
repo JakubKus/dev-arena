@@ -6,7 +6,7 @@ export const developerQuery = gql`
       hp
       damage { max min }
       avatarUrl
-      weaponUrl 
+      weaponUrl
     }
   }
 `;
@@ -18,4 +18,4 @@ export const developerClothingQuery = gql`
       imageUrl
     }
   }
-`
+`;

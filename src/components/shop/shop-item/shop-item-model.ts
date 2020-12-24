@@ -7,5 +7,5 @@ export interface ShopItemData {
 
 export interface ShopItemModel {
   type: 'Buy' | 'Equip' | 'Unequip' | 'Pick' | 'Picked';
-  data: ShopItemData
+  data: ShopItemData;
 }

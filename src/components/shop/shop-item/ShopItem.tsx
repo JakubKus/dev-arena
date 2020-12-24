@@ -18,60 +18,57 @@ import { useDispatch, useSelector } from 'react-redux';
 export const ShopItem: React.FC<ShopItemModel> = ({ type, ...props }) => {
   const dispatch = useDispatch();
   const player = useSelector(selectPlayer);
-  const [equipItem] = useMutation<equipItem, equipItemVariables>(equipItemQuery);
   const [buy] = useMutation<shopUpdatePlayer, shopUpdatePlayerVariables>(shopPlayerQuery);
-  const [unequipClothing] = useMutation<shopUnequipClothing, shopUnequipClothingVariables>(shopUnequipClothingQuery);
   const [changeDeveloper] = useMutation<shopChangeDeveloper, shopChangeDeveloperVariables>(shopChangeDeveloperQuery);
+  const [unequipClothing] = useMutation<shopUnequipClothing, shopUnequipClothingVariables>(shopUnequipClothingQuery);
+  const [equipItem] = useMutation<equipItem, equipItemVariables>(equipItemQuery);
 
   const handleCta = (data: ShopItemData) => {
     switch (type) {
       case 'Buy':
-        handlePurchase(data.id as string, data.price as number);
+        handlePurchase(data.id, data.price);
         break;
       case 'Pick':
-        handlePickDeveloper(data.name as string);
+        handlePickDeveloper(data.name);
         break;
       case 'Unequip':
-        handleUnequipItem(data.id as string);
+        handleUnequipItem(data.id);
         break;
       default:
-        handleEquipItem(data.id as string);
+        handleEquipItem(data.id);
         break;
     }
   };
-  const handleEquipItem = async (toEquip: string) => {
-    if (player.nickname) {
-      const { data } = await equipItem({ variables: { nick: player.nickname, toEquip, equipped: player.equippedIds } });
-      dispatch(updatePlayer({ equippedIds: data?.equipItem?.equippedIds }));
-    }
+
+  const handlePurchase = async (boughtId?: string, price?: number) => {
+    if (!boughtId || !price || player.cash < price || !player.nickname) return;
+    await buy({
+      variables: {
+        cash: player.cash - price,
+        nick: player.nickname,
+        boughtIds: player.boughtIds.concat(boughtId),
+      },
+    });
+    dispatch(updatePlayer({ cash: player.cash - price, boughtIds: player.boughtIds.concat(boughtId) }));
   };
 
-  const handleUnequipItem = async (toUnequip: string) => {
-    if (player.nickname) {
-      const updatedIds = player.equippedIds.filter(x => x !== toUnequip);
-      await unequipClothing({ variables: { nick: player.nickname, equippedIds: updatedIds } });
-      dispatch(updatePlayer({ equippedIds: updatedIds }));
-    }
+  const handlePickDeveloper = async (devName?: string) => {
+    if (!player.nickname || !devName) return;
+    await changeDeveloper({ variables: { nick: player.nickname, chosenDevName: devName } });
+    dispatch(updatePlayer({ chosenDevName: devName }));
   };
 
-  const handlePurchase = async (boughtId: string, price: number) => {
-    if (player.cash >= price && player.nickname) {
-      await buy({
-        variables: {
-          cash: player.cash - price,
-          nick: player.nickname,
-          boughtIds: player.boughtIds.concat(boughtId),
-        },
-      });
-      dispatch(updatePlayer({ cash: player.cash - price, boughtIds: player.boughtIds.concat(boughtId) }));
-    }
+  const handleUnequipItem = async (toUnequip?: string) => {
+    if (!player.nickname || !toUnequip) return;
+    const updatedIds = player.equippedIds.filter(x => x !== toUnequip);
+    await unequipClothing({ variables: { nick: player.nickname, equippedIds: updatedIds } });
+    dispatch(updatePlayer({ equippedIds: updatedIds }));
   };
 
-  const handlePickDeveloper = async (devName: string) => {
-    if (player.nickname) {
-      await changeDeveloper({ variables: { nick: player.nickname, chosenDevName: devName } });
-      dispatch(updatePlayer({ chosenDevName: devName }));
-    }
+  const handleEquipItem = async (toEquip?: string) => {
+    if (!player.nickname || !toEquip) return;
+    const { data } = await equipItem({ variables: { nick: player.nickname, toEquip, equipped: player.equippedIds } });
+    dispatch(updatePlayer({ equippedIds: data?.equipItem?.equippedIds }));
   };
 
   return (

@@ -1,18 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { AuthState } from 'features/auth/auth-state';
+import { IS_GUEST } from 'localstorage-keys';
 import { RootState } from 'store';
-
-interface AuthState {
-  success: boolean;
-  pending: boolean;
-  failure: boolean;
-  guest: boolean;
-}
 
 const initialState: AuthState = {
   success: false,
   pending: false,
   failure: false,
-  guest: false,
+  guest: localStorage[IS_GUEST],
 };
 
 export const authSlice = createSlice({
@@ -30,12 +25,15 @@ export const authSlice = createSlice({
     fulfillLogin: state => {
       state.success = true;
       state.pending = state.failure = state.guest = false;
+      localStorage.removeItem(IS_GUEST);
     },
     logOut: state => {
       state.success = state.pending = state.failure = false;
+      localStorage.removeItem(IS_GUEST);
     },
     beginGuest: state => {
       state.guest = true;
+      localStorage[IS_GUEST] = true;
     },
   },
 });

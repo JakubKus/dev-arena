@@ -1,6 +1,6 @@
 import { ApolloProvider } from '@apollo/client';
-import { Auth0Wrapper } from 'auth0-wrapper';
 import { apolloClient } from 'components/apollo-client/apolloClient';
+import { Auth0Wrapper } from 'components/auth0-wrapper/auth0-wrapper';
 import { Routing } from 'components/routing/Routing';
 import 'index.scss';
 import React from 'react';

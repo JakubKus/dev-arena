@@ -1,3 +1,4 @@
+import { Arena } from 'components/arena/Arena';
 import { Credits } from 'components/credits/Credits';
 import { Highscores } from 'components/highscores/Highscores';
 import { Home } from 'components/home/Home';
@@ -8,9 +9,8 @@ import { NotInitGuard } from 'components/routing/route-guards/NotInitGuard';
 import { Shop } from 'components/shop/Shop';
 import { Welcome } from 'components/welcome/Welcome';
 import { Authorizer } from 'features/auth/Authorizer';
-import { Arena } from 'components/arena/Arena';
-import { InitDeveloper } from 'features/player/InitDeveloper';
-import { InitPlayer } from 'features/player/InitPlayer';
+import { InitDeveloper } from 'features/developer/init-developer/InitDeveloper';
+import { InitPlayer } from 'features/player/init-player/InitPlayer';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ROUTE } from 'routes';

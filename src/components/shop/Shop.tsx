@@ -90,7 +90,7 @@ export const Shop: React.FC = () => {
       <HomeButton />
       <div className="shop__items">
         {(clothingToBuy.length > 0 || developersToBuy.length > 0) && <>
-          <h2 className="shop__section-title">To buy</h2>
+          <h2 className="shop__section-title">Locked</h2>
           <div className="shop__section">
             {clothingToBuy.map(x => (
               <ShopItem type="Buy"
@@ -105,7 +105,7 @@ export const Shop: React.FC = () => {
           </div>
         </>}
         {(boughtClothing.length > 0 || boughtDevelopers.length > 0) && <>
-          <h2 className="shop__section-title">Bought</h2>
+          <h2 className="shop__section-title">Unlocked</h2>
           <div className="shop__section">
             {boughtClothing.map(x => (
               <ShopItem type="Equip" key={x?.id} data={{ imageUrl: x?.imageUrl, name: x?.name, id: x?.id }} />
@@ -115,7 +115,7 @@ export const Shop: React.FC = () => {
             ))}
           </div>
         </>}
-        <h2 className="shop__section-title">Equipped or picked</h2>
+        <h2 className="shop__section-title">Active</h2>
         <div className="shop__section">
           {equippedClothing.map(x => (
             <ShopItem type="Unequip" key={x?.id} data={{ imageUrl: x?.imageUrl, name: x?.name, id: x?.id }} />

@@ -6,5 +6,5 @@ import { ROUTE } from 'routes';
 
 export const NotInitGuard: React.FC = ({ children }) => {
   const player = useSelector(selectPlayer);
-  return !player.isInitialized ? <>{children}</> : <Redirect to={ROUTE.home} />;
+  return player.isInitialized ? <Redirect to={ROUTE.home} /> : <>{children}</>;
 };

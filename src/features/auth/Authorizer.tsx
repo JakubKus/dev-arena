@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { failLogin, fulfillLogin, selectGuest, selectLoginFailed } from 'features/auth/authSlice';
+import { failLogin, fulfillLogin, selectAuth, selectGuest, selectLoginFailed } from 'features/auth/authSlice';
 import { selectPlayer, updatePlayer } from 'features/player/playerSlice';
 import { TOKEN } from 'localstorage-keys';
 import React, { useEffect } from 'react';
@@ -12,6 +12,7 @@ export const Authorizer: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLoginFail = useSelector(selectLoginFailed);
+  const isAuth = useSelector(selectAuth);
   const player = useSelector(selectPlayer);
   const isGuest = useSelector(selectGuest);
 
@@ -35,9 +36,9 @@ export const Authorizer: React.FC = () => {
 
   useEffect(() => {
     if (isGuest) history.push(ROUTE.initDeveloper);
-    if (player.email) history.push(ROUTE.initPlayer);
+    if (isAuth && player.email) history.push(ROUTE.initPlayer);
     if (isLoginFail) history.push(ROUTE.welcome);
-  }, [isGuest, history, player.email, isLoginFail]);
+  }, [isGuest, history, player.email, isAuth, isLoginFail]);
 
   return null;
 };

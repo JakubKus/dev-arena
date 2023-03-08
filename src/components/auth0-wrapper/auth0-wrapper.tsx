@@ -1,5 +1,5 @@
-import { Auth0Provider } from '@auth0/auth0-react';
 import React, { FC } from 'react';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 export const Auth0Wrapper: FC = ({ children }) => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN ?? '';
@@ -11,9 +11,13 @@ export const Auth0Wrapper: FC = ({ children }) => {
     <Auth0Provider
       domain={domain}
       clientId={clientId}
-      audience={audience}
       issuer={issuer}
-      redirectUri={window.location.origin}
+      authorizationParams={{
+        audience,
+        redirect_uri: window.location.origin,
+      }}
+      useRefreshTokens
+      cacheLocation="localstorage"
     >
       {children}
     </Auth0Provider>

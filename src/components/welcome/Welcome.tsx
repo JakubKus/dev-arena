@@ -13,7 +13,11 @@ export const Welcome: React.FC = () => {
 
   const handleSignup = () => {
     dispatch(beginLogin());
-    loginWithRedirect({ screen_hint: 'signup' }).catch((_) => {
+    loginWithRedirect({
+      authorizationParams: {
+        screen_hint: "signup",
+      }
+    }).catch((_) => {
       dispatch(failLogin());
     });
   };

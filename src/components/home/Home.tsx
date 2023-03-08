@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
 
   const handleAuth = () => {
     dispatch(logOut());
-    logout();
+    logout({ logoutParams: { returnTo: window.location.origin }});
   };
 
   return (

@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "https://devarena-api.herokuapp.com/graphql",
+        "url": "https://dev-arena-api.jkus.dev/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
         },

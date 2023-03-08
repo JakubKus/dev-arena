@@ -2,9 +2,16 @@
   "name": "dev-arena",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "generate-graphql-types": "apollo client:codegen --target=typescript --localSchemaFile=schema.graphql --globalTypesFile=src/globalTypes.ts gql-types"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.5",
-    "@auth0/auth0-react": "^1.1.0",
+    "@auth0/auth0-react": "^2.0.1",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -16,7 +23,6 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.6",
     "graphql": "^15.4.0",
-    "node-sass": "^7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.1",
@@ -24,12 +30,8 @@
     "react-scripts": "4.0.0",
     "typescript": "^3.8.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "generate-graphql-types": "apollo client:codegen --target=typescript --localSchemaFile=schema.graphql --globalTypesFile=src/globalTypes.ts gql-types"
+  "devDependencies": {
+    "sass": "^1.58.3"
   },
   "eslintConfig": {
     "extends": "react-app"
